@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './GameOne.css';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
@@ -53,16 +54,28 @@ function GameOneApp() {
     setLastRemovedWordIndex(null);
   };
 
-  const removePunctuation = word => word.replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, "");
+  const removePunctuation = word => word.replace(/[.,/#!$%^&*;:{}=\-_`~()" \u201d ]/g, "");
 
   const removeWord = () => {
-    const words = gameText.split(' ');
+    const words = gameText.split(' ').filter(word => word.trim() !== '' && !/^[.,/#!$%^&*;:{}=\-_`~()"]+$/.test(word));
+    
+    if (words.length === 0) {
+      console.log('No words available to remove.');
+      return;
+    }
+  
     const randomIndex = Math.floor(Math.random() * words.length);
-    setMissingWord(removePunctuation(words[randomIndex]));
-    setLastRemovedWordIndex(randomIndex);
-    words[randomIndex] = '_____';
-    setGameText(words.join(' '));
+    const selectedWord = words[randomIndex];
+    
+    // Update the missing word and game text
+    setMissingWord(removePunctuation(selectedWord));
+    setLastRemovedWordIndex(gameText.split(' ').findIndex(word => word === selectedWord));
+  
+    // Replace the selected word with '_____'
+    const updatedGameText = gameText.split(' ').map(word => word === selectedWord ? '_____' : word).join(' ');
+    setGameText(updatedGameText);
   };
+  
 
   const checkAnswer = () => {
     console.log('User input:', userInput);
@@ -84,7 +97,8 @@ function GameOneApp() {
           <Modal.Header closeButton>
             <Modal.Title>Game Instructions:</Modal.Title>
           </Modal.Header>
-          <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+          <Modal.Body>Players begin by choosing their chapter and verse. The game will incrementally remove a word from the verse, and players must supply the missing word to proceed. 
+          <br/><br/><i>Pro Tip: Repeat the entire verse aloud after each round to better recall it, and use the microphone feature on your phone's keyboard for faster play.</i></Modal.Body>
           <Modal.Footer>
             <Button variant='secondary' onClick={handleClose}>
               Close
