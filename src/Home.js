@@ -1,11 +1,12 @@
 import React from 'react';
+import './Home.css';
 
 class HomeApp extends React.Component {
     render() {
         return(
-            <div>
+            <div className='home-custom'>
                 <br />
-                <h1>Welcome to TBQ QuizWhiz!</h1>
+                <h1>Welcome to TBQuizWhiz!</h1>
                 <br />
                 <h3>This is an app created by a former quizzer for future quizzers</h3>
                 <br/>

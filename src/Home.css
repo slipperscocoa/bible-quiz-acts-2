@@ -1,0 +1,17 @@
+.home-custom {
+    height: 100%;
+    padding: 5%;
+    position: relative; /* Ensure the text is positioned relative to the container */
+  z-index: 1; /* Ensure the text is above the background image */
+}
+
+/* Custom CSS */
+body {
+    height: 100vh; /* Ensure the body covers the entire viewport height */
+    margin: 0; /* Remove default margin */
+    background-image: url('../public/acts_wording.png'); /* Replace with your image path */
+    background-size: cover; /* Ensure the image covers the entire background */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+  }
+  
