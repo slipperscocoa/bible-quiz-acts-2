@@ -101,6 +101,7 @@ function GameTwoApp () {
 
   const handleInputChange = event => {
     setUserInput(event.target.value)
+    setErrorMessage('') // Reset error message when user starts typing
   }
 
   const handleSubmit = () => {
@@ -112,7 +113,7 @@ function GameTwoApp () {
       .replace(/[^\w\s]|_/g, '')
       .replace(/\s+/g, ' ')
       .toLowerCase()
-
+  
     if (normalizedInput === normalizedVerse) {
       setShowCongrats(true)
     } else {
@@ -139,6 +140,8 @@ function GameTwoApp () {
       </>
       <br />
       <br />
+      <h1>Reference Recall</h1>
+      <br/>
       <br />
       <Button className='btn-custom' onClick={handleFetchVerse}>Start Game</Button>
       <br />

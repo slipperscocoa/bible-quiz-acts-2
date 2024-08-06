@@ -67,12 +67,18 @@ function GameOneApp () {
         throw new Error('Network response was not ok')
       }
       const data = await response.json()
-      setVerseText(data.text)
-      setGameText(data.text)
+
+      // Remove <br> tags from the fetched verse text
+      const cleanedText = data.text.replace(/<br\s*\/?>/gi, ' ')
+
+      setVerseText(cleanedText)
+      setGameText(cleanedText)
       setCorrectWords(new Set())
       setLastRemovedWordIndex(null)
     } catch (error) {
-      setErrorMessage('An unexpected error occurred, please try a different verse.')
+      setErrorMessage(
+        'An unexpected error occurred, please try a different verse.'
+      )
     }
   }
 
@@ -88,6 +94,11 @@ function GameOneApp () {
 
     if (words.length === 0) {
       setShowFullVerseModal(true)
+      return
+    }
+
+    if (missingWord) {
+      // If a word is already removed, don't remove another one
       return
     }
 
@@ -113,6 +124,9 @@ function GameOneApp () {
       setUserInput('')
       setIncorrectMessage('') // Clear the incorrect message on correct answer
       setCorrectWords(prev => new Set(prev.add(lastRemovedWordIndex)))
+
+      // Clear the missing word to allow another removal
+      setMissingWord('')
       removeWord()
     } else {
       setIncorrectMessage('Incorrect! Try again.')
@@ -177,12 +191,16 @@ function GameOneApp () {
             <br />
             <br />
             <i>
-              Pro Tips: 
+              Pro Tips:
               <ul>
-                <li>Repeat the entire verse aloud after each round to better
-                recall it</li>
-                <li>Use the microphone feature on your phone's keyboard
-                for faster play</li>
+                <li>
+                  Repeat the entire verse aloud after each round to better
+                  recall it
+                </li>
+                <li>
+                  Use the microphone feature on your phone's keyboard for faster
+                  play
+                </li>
                 <li>Keep your book handy as a reference if you get stuck</li>
               </ul>
             </i>
@@ -231,7 +249,7 @@ function GameOneApp () {
         </Button>
       </Form>
       <br />
-      <br/>
+      <br />
       {verseText && (
         <div>
           <h4>Verse Text:</h4>
@@ -258,8 +276,8 @@ function GameOneApp () {
               <Button className='btn-custom' onClick={handleBeginGame}>
                 Begin Game
               </Button>
-              <br/>
-              <br/>
+              <br />
+              <br />
             </>
           )}
           {showInputForm && (
@@ -273,7 +291,7 @@ function GameOneApp () {
               {incorrectMessage && (
                 <p style={{ color: 'red' }}>{incorrectMessage}</p>
               )}
-              <br/>
+              <br />
               <Button className='btn-custom' onClick={checkAnswer}>
                 Submit
               </Button>

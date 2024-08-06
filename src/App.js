@@ -7,6 +7,7 @@ import NavBarApp from './NavBar';
 import HomeApp from './Home';
 import GameOneApp from './GameOne';
 import GameTwoApp from './GameTwo';
+import TipsApp from './Tips';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/gameTwo",
         element: <GameTwoApp />
+      },
+      {
+        path: "/tips",
+        element: <TipsApp />
       },
     ]
   }

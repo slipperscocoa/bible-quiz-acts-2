@@ -16,8 +16,9 @@ class NavBarApp extends React.Component {
             <Navbar.Collapse id='basic-navbar-nav'>
               <Nav className='me-auto'>
                 <Nav.Link className='navbar-link-custom' href='/'>Home</Nav.Link>
-                <Nav.Link className='navbar-link-custom' href='/gameOne'>Game 1</Nav.Link>
-                <Nav.Link className='navbar-link-custom' href='/gameTwo'>Game 2</Nav.Link>
+                <Nav.Link className='navbar-link-custom' href='/gameOne'>Verse Vanish Game</Nav.Link>
+                <Nav.Link className='navbar-link-custom' href='/gameTwo'>Reference Recall Game</Nav.Link>
+                <Nav.Link className='navbar-link-custom' href='/tips'>Memorization Tips</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
