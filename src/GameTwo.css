@@ -1,0 +1,16 @@
+.btn-custom {
+    background-color: #684a92; /* Replace with your desired color */
+    color: white; /* Text color */
+}
+
+.btn-custom:active,
+.btn-custom:focus {
+    background-color: #684a92; /* Replace with your desired color */
+    color: white; /* Text color */
+    outline: none; /* Remove default focus outline */
+}
+
+.game-two-custom {
+    height: 100%;
+    padding: 5%;
+}
