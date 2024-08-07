@@ -9,7 +9,7 @@ function TipsApp () {
       <br />
       <Carousel className='carousel'>
         <Carousel.Item>
-          <img src='/20240621_184325.png' alt='' />
+          <img src='/lavender.jpg' alt='' />
           <Carousel.Caption>
             <h3>
               <i><b>
@@ -22,7 +22,7 @@ function TipsApp () {
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <img src='/20240523_192806.jpg' alt='' />
+          <img src='/rose.jpg' alt='' />
           <Carousel.Caption>
             <h3>
               <i><b>
@@ -36,7 +36,7 @@ function TipsApp () {
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <img src='/20240712_135710.jpg' alt='' />
+          <img src='/snowball.jpg' alt='' />
           <Carousel.Caption>
             <h3>
               <i><b>
@@ -50,7 +50,7 @@ function TipsApp () {
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <img src='/20240621_184325.png' alt='' />
+          <img src='/poconos.jpg' alt='' />
           <Carousel.Caption>
             <h3>
               <i><b>
@@ -65,7 +65,7 @@ function TipsApp () {
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <img src='/20240621_184325.png' alt='' />
+          <img src='/tree.jpg' alt='' />
           <Carousel.Caption>
             <h3>
               <i><b>
@@ -80,7 +80,7 @@ function TipsApp () {
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <img src='/20240621_184325.png' alt='' />
+          <img src='/hurst.jpg' alt='' />
           <Carousel.Caption>
             <h3>
               <i><b>

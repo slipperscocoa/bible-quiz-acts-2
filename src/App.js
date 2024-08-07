@@ -9,6 +9,7 @@ import GameOneApp from './GameOne';
 import GameTwoApp from './GameTwo';
 import TipsApp from './Tips';
 
+
 const router = createBrowserRouter([
   {
     element: <NavBarApp />,
