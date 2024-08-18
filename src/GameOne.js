@@ -121,17 +121,28 @@ function GameOneApp () {
 
   const checkAnswer = () => {
     if (userInput.trim().toLowerCase() === missingWord.trim().toLowerCase()) {
-      setUserInput('')
-      setIncorrectMessage('') // Clear the incorrect message on correct answer
-      setCorrectWords(prev => new Set(prev.add(lastRemovedWordIndex)))
-
-      // Clear the missing word to allow another removal
-      setMissingWord('')
-      removeWord()
+      setUserInput('');
+      setIncorrectMessage(''); // Clear the incorrect message on correct answer
+  
+      // Update the correct words and set missingWord to empty after the state is updated
+      setCorrectWords(prev => {
+        const newSet = new Set(prev);
+        newSet.add(lastRemovedWordIndex);
+        return newSet;
+      });
+      setMissingWord(''); // Clear the missing word to allow another removal
     } else {
-      setIncorrectMessage('Incorrect! Try again.')
+      setIncorrectMessage('Incorrect! Try again.');
     }
-  }
+  };
+  
+  // Add this useEffect to remove the next word when the current word is correctly answered
+  useEffect(() => {
+    if (missingWord === '' && correctWords.size > 0) {
+      removeWord(); // Remove the next word once the current word is correctly answered
+    }
+  }, [missingWord, correctWords]);
+  
 
   const normalizeText = text =>
     text.toLowerCase().replace(/[.,/#!$%^&*;:{}=\-_`~()" \u201d ]/g, '')
